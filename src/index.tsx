@@ -2,11 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./App";
+import { QueryProvider } from "./app/providers/QueryProvider";
+import { AuthProvider } from "./app/providers/AuthProvider";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <QueryProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </QueryProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
