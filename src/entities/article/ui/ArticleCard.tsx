@@ -9,6 +9,13 @@ interface Props {
   onFavorite?: (article: Article) => void;
 }
 
+/**
+ * Used to render a single article card.
+ * This component can be optimized with React.memo in the future, but it's not necessary for now
+ * @param article
+ * @param onFavorite
+ * @constructor
+ */
 export function ArticleCard({ article, onFavorite }: Props) {
   const { slug, title, description, createdAt, favoritesCount, favorited, author } = article;
 
