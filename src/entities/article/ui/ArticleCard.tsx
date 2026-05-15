@@ -2,18 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Article } from '../model/types';
 import { AVATAR_PLACEHOLDER_URL } from '../../../shared/config';
+import { formatDate } from '../../../shared/lib';
 
 interface Props {
   article: Article;
   onFavorite?: (article: Article) => void;
-}
-
-function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
 }
 
 export function ArticleCard({ article, onFavorite }: Props) {

@@ -8,14 +8,7 @@ import { GlobalHeader } from '../../../widgets/global-header';
 import { useAuth } from '../../../app/providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { AVATAR_PLACEHOLDER_URL } from '../../../shared/config';
-
-function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
+import { formatDate } from '../../../shared/lib';
 
 export function ArticlePage(): JSX.Element {
   const { slug } = useParams<{ slug: string }>();
