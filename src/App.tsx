@@ -7,6 +7,7 @@ const LogoutPage = lazy(() => import('./pages/logout').then((m) => ({ default: m
 const ProfilePage = lazy(() => import('./pages/profile').then((m) => ({ default: m.ProfilePage })));
 const ArticlePage = lazy(() => import('./pages/article').then((m) => ({ default: m.ArticlePage })));
 const NotImplementedPage = lazy(() => import('./pages/not-implemented').then((m) => ({ default: m.NotImplementedPage })));
+const NotFoundPage = lazy(() => import('./pages/not-found').then((m) => ({ default: m.NotFoundPage })));
 
 function App(): JSX.Element {
   return (
@@ -14,13 +15,14 @@ function App(): JSX.Element {
       <Suspense fallback={null}>
         <Switch>
           <Route path="/login" exact component={AuthPage} />
-          <Route path="/register" exact component={AuthPage} />
+          <Route path="/register" exact component={NotImplementedPage} />
           <Route path="/logout" exact component={LogoutPage} />
           <Route path="/editor" exact component={NotImplementedPage} />
           <Route path="/settings" exact component={NotImplementedPage} />
           <Route path="/profile/:username" exact component={ProfilePage} />
-          <Route path="/:slug" exact component={ArticlePage} />
-          <Route path="/" component={HomePage} />
+          <Route path="/article/:slug" exact component={ArticlePage} />
+          <Route path="/" exact component={HomePage} />
+          <Route component={NotFoundPage} />
         </Switch>
       </Suspense>
     </Router>

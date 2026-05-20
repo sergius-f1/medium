@@ -1,9 +1,17 @@
-import React from 'react';
+import React from "react";
 import { useLoginForm } from '../../../features/auth-by-email';
 import { GlobalHeader } from '../../../widgets/global-header';
 
 export function AuthPage(): JSX.Element {
   const { email, setEmail, password, setPassword, errors, isLoading, handleSubmit } = useLoginForm();
+
+  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setEmail(e.target.value);
+  }
+
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setPassword(e.target.value);
+  }
 
   return (
     <>
@@ -29,7 +37,7 @@ export function AuthPage(): JSX.Element {
                     type="email"
                     placeholder="Email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={onChangeEmail}
                     required
                   />
                 </fieldset>
@@ -39,7 +47,7 @@ export function AuthPage(): JSX.Element {
                     type="password"
                     placeholder="Password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={onChangePassword}
                     required
                   />
                 </fieldset>

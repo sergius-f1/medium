@@ -1,0 +1,22 @@
+
+.query-state-loading {
+  justify-content: center;
+  display: flex;
+}
+
+.query-state-msg__error,
+.query-state-msg__info {
+  margin: 15px 0;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.query-state-msg__error {
+  background-color: color-mix(in srgb, var(--danger-light) 25%, white);
+  color: var(--danger);
+}
+
+.query-state-msg__info {
+  background-color: color-mix(in srgb, var(--secondary) 25%, white);
+  color: var(--text);
+}

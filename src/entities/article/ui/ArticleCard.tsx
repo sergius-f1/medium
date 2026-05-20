@@ -38,7 +38,7 @@ export function ArticleCard({ article, onFavorite }: Props) {
           <i className="ion-heart" /> {favoritesCount}
         </button>
       </div>
-      <Link to={`/${slug}`} className="preview-link">
+      <Link to={`/article/${slug}`} className="preview-link">
         <h1>{title}</h1>
         <p>{description}</p>
         <span>Read more...</span>

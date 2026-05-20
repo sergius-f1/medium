@@ -20,6 +20,9 @@ export class ApiError extends Error {
 
 type UnauthorizedHandler = () => void;
 
+/**
+ * Default unauthorized handler
+ */
 let onUnauthorized: UnauthorizedHandler = () => {
   tokenService.remove();
 };
@@ -60,16 +63,33 @@ async function request<T>(
   return data as T;
 }
 
+/**
+ * Used to send GET HTTP request to the API
+ * @param path - endpoint path
+ */
 const get = <T>(path: string): Promise<T> =>
   request<T>('GET', path);
 
+/**
+ * Used to send POST HTTP request to the API
+ * @param path - endpoint path
+ * @param body - body of the request
+ */
 const post = <T>(path: string, body?: unknown): Promise<T> =>
   request<T>('POST', path, body);
 
+/**
+ * Used to send PUT HTTP request to the API
+ * @param path - endpoint path
+ * @param body - the body contains only modified fields of the object.
+ */
 const put = <T>(path: string, body?: unknown): Promise<T> =>
   request<T>('PUT', path, body);
 
-
+/**
+ * Used to send DELETE HTTP request to the API
+ * @param path - endpoint path
+ */
 const deleteMethod = <T>(path: string): Promise<T> =>
   request<T>('DELETE', path);
 
