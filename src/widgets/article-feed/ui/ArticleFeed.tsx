@@ -20,6 +20,10 @@ export function ArticleFeed({ params, isAuthenticated }: ArticleFeedProps): Reac
   const { handleFavorite } = useFavoriteArticle(refetch);
   const onFavorite = isAuthenticated ? handleFavorite : () => history.push('/login');
 
+  /**
+   * TODO: instead of spinner on the page add skeleton to improve CLS metrics
+   * now: 0.099 , target < 0.1
+   */
   return (
     <QueryState
       isLoading={isLoading}
