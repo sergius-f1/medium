@@ -1,6 +1,6 @@
-import React from 'react';
-import { Spinner } from '../spinner/Spinner';
-import './QueryState.css';
+import React from "react";
+import { Spinner } from "../spinner/Spinner";
+import "./QueryState.css";
 
 interface QueryStateProps {
   isLoading: boolean;
@@ -22,7 +22,14 @@ interface QueryStateProps {
  * @param emptyDataMessage - custom user-friendly empty message
  * @constructor
  */
-export function QueryState({ isLoading, isEmpty, isError, children, errorMessage, emptyDataMessage }: QueryStateProps): React.ReactElement {
+export function QueryState({
+  isLoading,
+  isEmpty,
+  isError,
+  children,
+  errorMessage,
+  emptyDataMessage,
+}: QueryStateProps): React.ReactElement {
   if (isLoading) {
     return (
       <div className="query-state-loading">
@@ -32,11 +39,11 @@ export function QueryState({ isLoading, isEmpty, isError, children, errorMessage
   }
 
   if (isError) {
-    return <div className="query-state-msg__error">{errorMessage || 'Something went wrong'}</div>;
+    return <div className="query-state-msg__error">{errorMessage || "Something went wrong"}</div>;
   }
 
   if (isEmpty) {
-    return <div className="query-state-msg__info">{emptyDataMessage || 'Empty data'} </div>;
+    return <div className="query-state-msg__info">{emptyDataMessage || "Empty data"} </div>;
   }
 
   return <>{children}</>;

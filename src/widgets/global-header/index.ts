@@ -1,1 +1,1 @@
-export { GlobalHeader } from './ui/GlobalHeader';
+export { GlobalHeader } from "./ui/GlobalHeader";

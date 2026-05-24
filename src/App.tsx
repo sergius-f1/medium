@@ -1,13 +1,13 @@
-import React, { lazy, Suspense } from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { lazy, Suspense } from "react";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
-const HomePage = lazy(() => import('./pages/home').then((m) => ({ default: m.HomePage })));
-const AuthPage = lazy(() => import('./pages/auth').then((m) => ({ default: m.AuthPage })));
-const LogoutPage = lazy(() => import('./pages/logout').then((m) => ({ default: m.LogoutPage })));
-const ProfilePage = lazy(() => import('./pages/profile').then((m) => ({ default: m.ProfilePage })));
-const ArticlePage = lazy(() => import('./pages/article').then((m) => ({ default: m.ArticlePage })));
-const NotImplementedPage = lazy(() => import('./pages/not-implemented').then((m) => ({ default: m.NotImplementedPage })));
-const NotFoundPage = lazy(() => import('./pages/not-found').then((m) => ({ default: m.NotFoundPage })));
+const HomePage = lazy(() => import("./pages/home").then(m => ({ default: m.HomePage })));
+const AuthPage = lazy(() => import("./pages/auth").then(m => ({ default: m.AuthPage })));
+const LogoutPage = lazy(() => import("./pages/logout").then(m => ({ default: m.LogoutPage })));
+const ProfilePage = lazy(() => import("./pages/profile").then(m => ({ default: m.ProfilePage })));
+const ArticlePage = lazy(() => import("./pages/article").then(m => ({ default: m.ArticlePage })));
+const NotImplementedPage = lazy(() => import("./pages/not-implemented").then(m => ({ default: m.NotImplementedPage })));
+const NotFoundPage = lazy(() => import("./pages/not-found").then(m => ({ default: m.NotFoundPage })));
 
 function App(): JSX.Element {
   return (

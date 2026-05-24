@@ -1,5 +1,5 @@
-import React from 'react';
-import { GlobalHeader } from '../../../widgets/global-header';
+import React from "react";
+import { GlobalHeader } from "../../../widgets/global-header";
 
 export function NotImplementedPage(): JSX.Element {
   return (

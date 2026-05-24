@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useAuth } from '../../../app/providers/AuthProvider';
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../../../app/providers/AuthProvider";
 
 export function LogoutPage(): null {
   const { logout } = useAuth();
@@ -8,7 +8,7 @@ export function LogoutPage(): null {
 
   useEffect(() => {
     logout();
-    history.replace('/');
+    history.replace("/");
   }, [logout, history]);
 
   return null;

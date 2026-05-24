@@ -1,19 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Article } from '../../../entities/article';
-import { User } from '../../../entities/user';
-import { AVATAR_PLACEHOLDER_URL } from '../../../shared/config';
-import { formatDate } from '../../../shared/lib';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Article } from "../../../entities/article";
+import { User } from "../../../entities/user";
+import { AVATAR_PLACEHOLDER_URL } from "../../../shared/config";
+import { formatDate } from "../../../shared/lib";
 
 interface ArticleContentProps {
   article: Article;
   user: User | null;
-  onFollow: ({ username, following }: { username: string; following: boolean}) => void;
+  onFollow: ({ username, following }: { username: string; following: boolean }) => void;
   onFavorite: (article: Article) => void;
   isFollowButtonDisabled: boolean;
 }
 
-export function ArticleContent({ article, user, onFollow, onFavorite, isFollowButtonDisabled }: ArticleContentProps): JSX.Element {
+export function ArticleContent({
+  article,
+  user,
+  onFollow,
+  onFavorite,
+  isFollowButtonDisabled,
+}: ArticleContentProps): JSX.Element {
   return (
     <>
       <div className="banner">
@@ -37,11 +43,11 @@ export function ArticleContent({ article, user, onFollow, onFavorite, isFollowBu
                   onClick={() => onFollow({ username: article.author.username, following: article.author.following })}
                 >
                   <i className="ion-plus-round" />
-                  &nbsp;{article.author.following ? 'Unfollow' : 'Follow'} {article.author.username}
+                  &nbsp;{article.author.following ? "Unfollow" : "Follow"} {article.author.username}
                 </button>
                 &nbsp;&nbsp;
                 <button
-                  className={`btn btn-sm ${article.favorited ? 'btn-primary' : 'btn-outline-primary'}`}
+                  className={`btn btn-sm ${article.favorited ? "btn-primary" : "btn-outline-primary"}`}
                   onClick={() => onFavorite(article)}
                 >
                   <i className="ion-heart" />
