@@ -1,5 +1,5 @@
-import { post, deleteMethod } from '../../../shared/api';
-import { ProfileResponse } from '../../../entities/user';
+import { post, deleteMethod } from "../../../shared/api";
+import { ProfileResponse } from "../../../entities/user";
 
 export const followUser = (username: string): Promise<ProfileResponse> =>
   post<ProfileResponse>(`/profiles/${username}/follow`);

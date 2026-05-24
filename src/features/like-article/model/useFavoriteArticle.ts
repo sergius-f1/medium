@@ -1,6 +1,6 @@
-import { Article } from '../../../entities/article';
-import { ApiError } from '../../../shared/api';
-import { favoriteArticle, unfavoriteArticle } from '../api';
+import { Article } from "../../../entities/article";
+import { ApiError } from "../../../shared/api";
+import { favoriteArticle, unfavoriteArticle } from "../api";
 
 export function useFavoriteArticle(refetch: () => void) {
   const handleFavorite = async (article: Article) => {

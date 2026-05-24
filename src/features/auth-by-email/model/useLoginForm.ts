@@ -1,8 +1,8 @@
-import { FormEvent, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { login } from '../api';
-import { useAuth } from '../../../app/providers/AuthProvider';
-import { ApiError } from '../../../shared/api';
+import { FormEvent, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { login } from "../api";
+import { useAuth } from "../../../app/providers/AuthProvider";
+import { ApiError } from "../../../shared/api";
 
 interface UseLoginForm {
   email: string;
@@ -18,8 +18,8 @@ export function useLoginForm(): UseLoginForm {
   const { login: setUser } = useAuth();
   const history = useHistory();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,14 +31,14 @@ export function useLoginForm(): UseLoginForm {
     try {
       const { user } = await login(email, password);
       setUser(user);
-      history.push('/');
+      history.push("/");
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
-        setErrors(['Invalid email or password.']);
+        setErrors(["Invalid email or password."]);
       } else if (err instanceof ApiError) {
         setErrors(Object.values(err.errors).flat());
       } else {
-        setErrors(['An unexpected error occurred.']);
+        setErrors(["An unexpected error occurred."]);
       }
     } finally {
       setIsLoading(false);

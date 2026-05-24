@@ -1,7 +1,7 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { setUnauthorizedHandler } from '../../shared/api';
-import { tokenService } from '../../shared/lib';
-import { getCurrentUser, User } from '../../entities/user';
+import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { setUnauthorizedHandler } from "../../shared/api";
+import { tokenService } from "../../shared/lib";
+import { getCurrentUser, User } from "../../entities/user";
 
 interface AuthContextValue {
   user: User | null;
@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }): JSX.E
   useEffect(() => {
     const token = tokenService.get();
     if (!token) {
-      return
+      return;
     }
 
     if (tokenService.isExpired(token)) {
@@ -35,24 +35,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }): JSX.E
       return;
     }
 
-    getCurrentUser().then(({ user }) => setUser(user)).catch(logout);
+    getCurrentUser()
+      .then(({ user }) => setUser(user))
+      .catch(logout);
   }, [logout]);
 
   useEffect(() => {
     setUnauthorizedHandler(logout);
   }, [logout]);
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth(): AuthContextValue {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within AuthProvider');
+    throw new Error("useAuth must be used within AuthProvider");
   }
   return context;
 }

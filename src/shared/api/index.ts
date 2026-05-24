@@ -1,1 +1,1 @@
-export { get, post, put, deleteMethod, setUnauthorizedHandler, ApiError } from './http';
+export { get, post, put, deleteMethod, setUnauthorizedHandler, ApiError } from "./http";

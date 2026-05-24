@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Article } from '../model/types';
-import { AVATAR_PLACEHOLDER_URL } from '../../../shared/config';
-import { formatDate } from '../../../shared/lib';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Article } from "../model/types";
+import { AVATAR_PLACEHOLDER_URL } from "../../../shared/config";
+import { formatDate } from "../../../shared/lib";
 
 interface Props {
   article: Article;
@@ -32,7 +32,7 @@ export function ArticleCard({ article, onFavorite }: Props) {
           <span className="date">{formatDate(createdAt)}</span>
         </div>
         <button
-          className={`btn btn-sm pull-xs-right ${favorited ? 'btn-primary' : 'btn-outline-primary'}`}
+          className={`btn btn-sm pull-xs-right ${favorited ? "btn-primary" : "btn-outline-primary"}`}
           onClick={() => onFavorite?.(article)}
         >
           <i className="ion-heart" /> {favoritesCount}

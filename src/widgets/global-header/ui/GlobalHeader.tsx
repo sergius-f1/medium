@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useAuth } from '../../../app/providers/AuthProvider';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useAuth } from "../../../app/providers/AuthProvider";
 
 export function GlobalHeader() {
   const { user } = useAuth();
@@ -8,7 +8,9 @@ export function GlobalHeader() {
   return (
     <nav className="navbar navbar-light">
       <div className="container">
-        <NavLink className="navbar-brand" to="/">conduit</NavLink>
+        <NavLink className="navbar-brand" to="/">
+          conduit
+        </NavLink>
         <ul className="nav navbar-nav pull-xs-right">
           <li className="nav-item">
             <NavLink exact className="nav-link" activeClassName="active" to="/">
@@ -19,12 +21,14 @@ export function GlobalHeader() {
             <>
               <li className="nav-item">
                 <NavLink className="nav-link" activeClassName="active" to="/editor">
-                  <i className="ion-compose" />&nbsp;New Article
+                  <i className="ion-compose" />
+                  &nbsp;New Article
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" activeClassName="active" to="/settings">
-                  <i className="ion-gear-a" />&nbsp;Settings
+                  <i className="ion-gear-a" />
+                  &nbsp;Settings
                 </NavLink>
               </li>
               <li className="nav-item">

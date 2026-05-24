@@ -1,19 +1,19 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { getProfile } from '../../../entities/user';
-import { useFollowAuthor } from '../../../features/follow-author';
-import { ArticleFeed } from '../../../widgets/article-feed';
-import { GlobalHeader } from '../../../widgets/global-header';
-import { useAuth } from '../../../app/providers/AuthProvider';
-import { AVATAR_PLACEHOLDER_URL } from '../../../shared/config';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getProfile } from "../../../entities/user";
+import { useFollowAuthor } from "../../../features/follow-author";
+import { ArticleFeed } from "../../../widgets/article-feed";
+import { GlobalHeader } from "../../../widgets/global-header";
+import { useAuth } from "../../../app/providers/AuthProvider";
+import { AVATAR_PLACEHOLDER_URL } from "../../../shared/config";
 
 export function ProfilePage(): JSX.Element {
   const { username } = useParams<{ username: string }>();
   const { user } = useAuth();
 
   const { data, refetch } = useQuery({
-    queryKey: ['profile', username],
+    queryKey: ["profile", username],
     queryFn: () => getProfile(username),
   });
 
@@ -29,11 +29,7 @@ export function ProfilePage(): JSX.Element {
           <div className="container">
             <div className="row">
               <div className="col-xs-12 col-md-10 offset-md-1">
-                <img
-                  src={profile?.image || AVATAR_PLACEHOLDER_URL}
-                  className="user-img"
-                  alt={username}
-                />
+                <img src={profile?.image || AVATAR_PLACEHOLDER_URL} className="user-img" alt={username} />
                 <h4>{profile?.username ?? username}</h4>
                 <p>{profile?.bio}</p>
                 {user && user.username !== username && profile && (
@@ -43,7 +39,7 @@ export function ProfilePage(): JSX.Element {
                     onClick={() => handleFollow({ username, following: profile.following })}
                   >
                     <i className="ion-plus-round" />
-                    &nbsp;{profile.following ? 'Unfollow' : 'Follow'} {username}
+                    &nbsp;{profile.following ? "Unfollow" : "Follow"} {username}
                   </button>
                 )}
               </div>
