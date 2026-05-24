@@ -17,7 +17,7 @@ export function ProfilePage(): JSX.Element {
     queryFn: () => getProfile(username),
   });
 
-  const { handleFollow } = useFollowAuthor(refetch);
+  const { handleFollow, isPending: isFollowButtonDisabled } = useFollowAuthor(refetch);
 
   const profile = data?.profile;
 
@@ -38,8 +38,9 @@ export function ProfilePage(): JSX.Element {
                 <p>{profile?.bio}</p>
                 {user && user.username !== username && profile && (
                   <button
+                    disabled={isFollowButtonDisabled}
                     className="btn btn-sm btn-outline-secondary action-btn"
-                    onClick={() => handleFollow(username, profile.following)}
+                    onClick={() => handleFollow({ username, following: profile.following })}
                   >
                     <i className="ion-plus-round" />
                     &nbsp;{profile.following ? 'Unfollow' : 'Follow'} {username}

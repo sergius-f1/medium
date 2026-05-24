@@ -1,19 +1,35 @@
+import { useMutation} from "@tanstack/react-query";
+import toast from 'react-hot-toast'
+
 import { ApiError } from '../../../shared/api';
 import { followUser, unfollowUser } from '../api';
 
-export function useFollowAuthor(refetch: () => void) {
-  const handleFollow = async (username: string, following: boolean) => {
-    try {
-      if (following) {
-        await unfollowUser(username);
-      } else {
-        await followUser(username);
-      }
-      refetch();
-    } catch (err) {
-      if (!(err instanceof ApiError)) throw err;
-    }
-  };
+interface HandleFollowParams {
+  username: string;
+  following: boolean;
+}
 
-  return { handleFollow };
+interface UseFollowAuthorResult
+{
+  handleFollow: (params: HandleFollowParams) => void;
+  isPending: boolean;
+}
+
+export function useFollowAuthor(onSuccess?:() => void): UseFollowAuthorResult {
+  const { mutate, isPending } = useMutation({
+    mutationFn: ({username, following}: HandleFollowParams) => {
+      if (following) {
+        return unfollowUser(username);
+      }
+      return followUser(username);
+    },
+    onSuccess,
+    onError: (error: Error) => {
+      if (error instanceof ApiError) {
+        toast.error('Failed to follow author');
+      }
+    },
+  })
+
+  return { handleFollow: mutate, isPending };
 }
