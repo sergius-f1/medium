@@ -89,7 +89,7 @@ describe("useFollowAuthor", () => {
     await renderedHook.waitFor(() => {
       expect(onSuccessMock).not.toHaveBeenCalled();
       expect(mockedFollowUser).toHaveBeenCalledWith("test-user");
-      expect(toast.error).toHaveBeenCalledWith("Failed to follow author");
+      expect(toast.error).toHaveBeenCalledWith("Failed to follow author_typo");
     });
   });
 });
