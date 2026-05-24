@@ -1,4 +1,4 @@
-## Stack
+## Tech Stack
 
 - **React 17** + **TypeScript** (strict mode)
 - **TanStack React Query** – server state & data fetching
