@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import toast from 'react-hot-toast';
 
 import { ApiError } from "../../../shared/api";
 import { followUser, unfollowUser } from "../api";
