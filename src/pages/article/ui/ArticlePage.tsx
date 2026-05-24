@@ -17,8 +17,7 @@ export function ArticlePage(): JSX.Element {
     queryKey: ['article', slug],
     queryFn: () => getArticle(slug),
   });
-
-  const { handleFollow } = useFollowAuthor(refetch);
+  const { handleFollow, isPending: isFollowButtonDisabled } = useFollowAuthor(refetch);
   const { handleFavorite } = useFavoriteArticle(refetch);
 
   const article = data?.article;
@@ -34,6 +33,7 @@ export function ArticlePage(): JSX.Element {
               user={user}
               onFollow={handleFollow}
               onFavorite={handleFavorite}
+              isFollowButtonDisabled={isFollowButtonDisabled}
             />
           )}
         </QueryState>

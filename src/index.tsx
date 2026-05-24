@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Toaster } from "react-hot-toast";
 
 import App from "./App";
 import { QueryProvider } from "./app/providers/QueryProvider";
@@ -10,6 +11,7 @@ ReactDOM.render(
   <React.StrictMode>
     <QueryProvider>
       <AuthProvider>
+        <Toaster />
         <App />
       </AuthProvider>
     </QueryProvider>

@@ -8,11 +8,12 @@ import { formatDate } from '../../../shared/lib';
 interface ArticleContentProps {
   article: Article;
   user: User | null;
-  onFollow: (username: string, following: boolean) => void;
+  onFollow: ({ username, following }: { username: string; following: boolean}) => void;
   onFavorite: (article: Article) => void;
+  isFollowButtonDisabled: boolean;
 }
 
-export function ArticleContent({ article, user, onFollow, onFavorite }: ArticleContentProps): JSX.Element {
+export function ArticleContent({ article, user, onFollow, onFavorite, isFollowButtonDisabled }: ArticleContentProps): JSX.Element {
   return (
     <>
       <div className="banner">
@@ -32,7 +33,8 @@ export function ArticleContent({ article, user, onFollow, onFavorite }: ArticleC
               <>
                 <button
                   className="btn btn-sm btn-outline-secondary"
-                  onClick={() => onFollow(article.author.username, article.author.following)}
+                  disabled={isFollowButtonDisabled}
+                  onClick={() => onFollow({ username: article.author.username, following: article.author.following })}
                 >
                   <i className="ion-plus-round" />
                   &nbsp;{article.author.following ? 'Unfollow' : 'Follow'} {article.author.username}
