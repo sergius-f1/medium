@@ -4,8 +4,14 @@ import * as api from '../api';
 import { useFollowAuthor } from "./useFollowAuthor";
 import { ApiError } from "../../../shared/api";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 jest.mock('../api');
+
+jest.mock('react-hot-toast', () => ({
+  error: jest.fn(),
+}))
+
 
 const mockedFollowUser = api.followUser as jest.Mock;
 const mockedUnfollowUser = api.unfollowUser as jest.Mock;
@@ -55,7 +61,7 @@ describe('useFollowAuthor', () => {
     await renderedHook.waitFor(() => {
       expect(mockedFollowUser).toHaveBeenCalledWith('test-user')
       expect(onSuccessMock).toHaveBeenCalledTimes(1);
-    })
+    });
   });
 
   it('should unfollow user when following is true', async () => {
@@ -69,7 +75,7 @@ describe('useFollowAuthor', () => {
     await renderedHook.waitFor(() => {
       expect(mockedUnfollowUser).toHaveBeenCalledWith('test-user')
       expect(onSuccessMock).toHaveBeenCalledTimes(1);
-    })
+    });
   });
 
 
@@ -88,7 +94,8 @@ describe('useFollowAuthor', () => {
 
     await renderedHook.waitFor(() => {
       expect(onSuccessMock).not.toHaveBeenCalled();
-      expect(mockedFollowUser).toHaveBeenCalledWith('test-user')
+      expect(mockedFollowUser).toHaveBeenCalledWith('test-user');
+      expect(toast.error).toHaveBeenCalledWith('Failed to follow author');
     })
   });
 
